@@ -2,14 +2,20 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import { generarAcusePDF } from '@/lib/pdf';
 
 type Expediente = {
   id: string;
   folio: string;
   solicitante: string;
+  correo?: string;
+  telefono?: string;
   contraparte: string;
+  paciente?: string;
   tipo: string;
+  modalidad?: string;
   estado: string;
+  hechos?: string;
 };
 
 export default function ExpedientesTable({
@@ -75,7 +81,7 @@ export default function ExpedientesTable({
               <td style={{ padding: 8 }}>{exp.contraparte}</td>
               <td style={{ padding: 8 }}>{exp.tipo}</td>
               <td style={{ padding: 8 }}>{exp.estado}</td>
-              <td style={{ padding: 8 }}>
+              <td style={{ padding: 8, display: 'flex', gap: 8 }}>
                 <button
                   onClick={() => onSelect(exp.id)}
                   style={{
@@ -88,6 +94,20 @@ export default function ExpedientesTable({
                   }}
                 >
                   Ver
+                </button>
+
+                <button
+                  onClick={() => generarAcusePDF(exp)}
+                  style={{
+                    padding: '6px 10px',
+                    borderRadius: 6,
+                    border: 'none',
+                    background: '#2563eb',
+                    color: 'white',
+                    cursor: 'pointer',
+                  }}
+                >
+                  PDF
                 </button>
               </td>
             </tr>
