@@ -43,10 +43,30 @@ export default function Page() {
       }}
     >
       <section>
-        <h1 style={{ marginBottom: 8 }}>SICEMAV v2</h1>
-        <p style={{ color: '#6b7a8c' }}>
-          Gestión de solicitudes y expedientes del CEMAV
-        </p>
+        <div
+  style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: 16,
+    marginBottom: 20,
+  }}
+>
+  <img
+    src="/logo-sicemav.png"
+    alt="SICEMAV"
+    style={{
+      height: 60,
+      objectFit: 'contain',
+    }}
+  />
+
+  <div>
+    <h1 style={{ margin: 0 }}>SICEMAV v2</h1>
+    <p style={{ margin: 0, color: '#6b7280' }}>
+      Gestión de solicitudes y expedientes del CEMAV
+    </p>
+  </div>
+</div>
       </section>
 
       <UserBar />
