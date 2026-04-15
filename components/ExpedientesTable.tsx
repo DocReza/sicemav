@@ -16,6 +16,7 @@ type Expediente = {
   modalidad?: string;
   estado: string;
   hechos?: string;
+  created_at?: string;
 };
 
 export default function ExpedientesTable({
