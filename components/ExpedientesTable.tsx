@@ -98,7 +98,9 @@ export default function ExpedientesTable({
                 </button>
 
                 <button
-                  onClick={() => generarAcusePDF(exp)}
+                  onClick={async () => {
+                    await generarAcusePDF(exp);
+                  }}
                   style={{
                     padding: '6px 10px',
                     borderRadius: 6,
