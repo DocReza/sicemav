@@ -61,7 +61,15 @@ export default function NewRequestForm({
     setSaving(true);
     setMessage('');
 
-    const folio = `CEMAV-${new Date().getFullYear()}-${Date.now().toString().slice(-6)}`;
+    const { data: folioData, error: folioError } = await supabase.rpc('generar_folio_anual');
+
+if (folioError || !folioData) {
+  setMessage(`Error generando folio: ${folioError?.message || 'No se pudo generar folio'}`);
+  setSaving(false);
+  return;
+}
+
+const folio = folioData;
     const estado: ExpedienteEstado = 'Solicitud recibida';
 
     const { error } = await supabase.from('expedientes').insert({
